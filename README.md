@@ -2,6 +2,55 @@
 
 基于frp 0.58.1 去流量特征版
 
+## 快速使用
+
+### server部署
+frps.toml
+``` toml
+# frps.toml
+bindPort = 7001
+vhostHTTPPort = 8080
+
+# The default value is 127.0.0.1. Change it to 0.0.0.0 when you want to access it from a public network.
+webServer.addr = "0.0.0.0"
+webServer.port = 7500
+# dashboard's username and password are both optional
+webServer.user = "admin"
+webServer.password = "Admin@7500"
+
+auth.token = "Admin@7500"
+```
+
+运行
+``` shell
+./frps -c frps.toml
+```
+
+### client部署
+frpc.toml
+``` toml
+bindPort = 7001
+# frp server address
+webServer.addr = "1.2.3.4"
+webServer.port = 7500
+auth.token = "Admin@7500"
+
+[[proxies]]
+name = "ssh1"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 22
+remotePort = 12344
+```
+
+运行
+``` shell
+./frpc -c frpc.toml
+```
+
+
+# 介绍
+
 [![Build Status](https://circleci.com/gh/fatedier/frp.svg?style=shield)](https://circleci.com/gh/fatedier/frp)
 [![GitHub release](https://img.shields.io/github/tag/fatedier/frp.svg?label=release)](https://fxp/releases)
 [![Go Report Card](https://goreportcard.com/badge/fxp)](https://goreportcard.com/report/fxp)
