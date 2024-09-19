@@ -1,6 +1,6 @@
 # frp
 
-frp去流量特征版本
+基于frp 0.58.1 去流量特征版
 
 [![Build Status](https://circleci.com/gh/fatedier/frp.svg?style=shield)](https://circleci.com/gh/fatedier/frp)
 [![GitHub release](https://img.shields.io/github/tag/fatedier/frp.svg?label=release)](https://fxp/releases)
